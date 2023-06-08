@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "wds --node-resolve --open --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "web-test-runner",
+    "test:visual": "web-test-runner --update-visual-baseline"
   },
   "keywords": [],
   "author": "",
@@ -14,9 +15,13 @@
   "devDependencies": {
     "@storybook/addon-docs": "^7.0.18",
     "@web/dev-server": "^0.2.1",
-    "@web/dev-server-storybook": "^0.7.1"
+    "@web/dev-server-storybook": "^0.7.1",
+    "@web/test-runner": "^0.16.1"
   },
   "dependencies": {
+    "@open-wc/testing": "^3.1.8",
+    "@web/test-runner-playwright": "^0.10.0",
+    "@web/test-runner-visual-regression": "^0.8.0",
     "dile-modal": "^1.5.4",
     "lit-element": "^3.3.2"
   }
