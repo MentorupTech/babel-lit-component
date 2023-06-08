@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "duplex-header-menu",
+      "properties": [
+        {
+
+        }
+      ],
+      "events": [],
+      "slots": [],
+      "cssProperties": []
+    }
+  ]
+}
