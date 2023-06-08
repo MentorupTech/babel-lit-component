@@ -39,20 +39,12 @@ class DuplexHeaderMenu extends LitElement {
     this.phoneNumber = '';
   }
 
-  render() {
-    return html`
-      <section class="wrapper-lit-header-menu">
-        ${this._headerMenuMobile()} ${this._headerMenuDesktop()}
-      </section>
-    `;
-  }
-
   _handleScrollSticky(event, menu) {
     let valueBackground = window.scrollY / 100;
     menu.style.backgroundColor = `rgba(253,253,253, ${valueBackground})`;
   }
 
-  _headerMenuDesktop() {
+  _renderHeaderMenuDesktop() {
     return html`
       <div class="header-menu-wrapper">
         <div class="header-menu-tlf">
@@ -134,7 +126,7 @@ class DuplexHeaderMenu extends LitElement {
     }
   }
 
-  _headerMenuMobile() {
+  _renderHeaderMenuMobile() {
     if (this.logo && this.icontlf && this.menuMobile) {
       return html`
         <nav class="header-menu-mobile">
@@ -223,6 +215,14 @@ class DuplexHeaderMenu extends LitElement {
         },
       })
     );
+  }
+
+  render() {
+    return html`
+      <section class="wrapper-lit-header-menu">
+        ${this._renderHeaderMenuMobile()} ${this._renderHeaderMenuDesktop()}
+      </section>
+    `;
   }
 }
 
