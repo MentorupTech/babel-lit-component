@@ -1,7 +1,7 @@
-import { LitElement, html } from "lit-element";
-import { shareStyle } from "./styles/duplex-theme/duplex-theme";
-import { style } from "./styles/lit-header-menu-style";
-import { styleIconSvg } from "./styles/lit-header-menu-icon-style";
+import { LitElement, html } from 'lit-element';
+import { shareStyle } from './styles/duplex-theme/duplex-theme';
+import { style } from './styles/lit-header-menu-style';
+import { styleIconSvg } from './styles/lit-header-menu-icon-style';
 
 class DuplexHeaderMenu extends LitElement {
   static get styles() {
@@ -22,8 +22,8 @@ class DuplexHeaderMenu extends LitElement {
 
   firstUpdated() {
     super.firstUpdated();
-    window.addEventListener("scroll", (event) => {
-      let menu = this.shadowRoot.querySelector(".menu-wrapper");
+    window.addEventListener('scroll', (event) => {
+      let menu = this.shadowRoot.querySelector('.menu-wrapper');
       this._handleScrollSticky(event, menu);
     });
   }
@@ -31,12 +31,12 @@ class DuplexHeaderMenu extends LitElement {
   constructor() {
     super();
     this.logo = {};
-    this.icontlf = "";
+    this.icontlf = '';
     this.menuMobile = [];
     this.menu = {};
     this.menuSocial = [];
     this.fixedStickyMenu = false;
-    this.phoneNumber = "";
+    this.phoneNumber = '';
   }
 
   render() {
@@ -58,7 +58,7 @@ class DuplexHeaderMenu extends LitElement {
         <div class="header-menu-tlf">
           ${this.phoneNumber
             ? html` <span>Telefono: <a>${this.phoneNumber}</a></span>`
-            : html`<slot name="menu-tlf"></slot>`}
+            : html`<slot class="modal-container" name="menu-tlf"></slot>`}
         </div>
         <div class="header-menu-social">
           <ul>
@@ -89,15 +89,15 @@ class DuplexHeaderMenu extends LitElement {
           ${Object.keys(this.menu).map((services) => {
             return html`
               <li
-                @click="${services === "Contacto" ? this._navUrlMenu : null}"
+                @click="${services === 'Contacto' ? this._navUrlMenu : null}"
                 class="menu-container-option-${this.menu[services].length !== 1
-                  ? "multiple"
-                  : "single"}"
+                  ? 'multiple'
+                  : 'single'}"
               >
                 <a
-                  href="${services === "Contacto"
+                  href="${services === 'Contacto'
                     ? this.menu[services][0]
-                    : "#"}"
+                    : '#'}"
                   >${services}</a
                 >
                 ${this._headerSubmenu(this.menu[services])}
@@ -118,13 +118,13 @@ class DuplexHeaderMenu extends LitElement {
               <li>
                 <a
                   class="container-submenu-option"
-                  href="${submenu["url"]}"
+                  href="${submenu['url']}"
                   @click="${this._navUrlMenu}"
                 >
                   <div class="container-submenu-option-img">
-                    <img src="${submenu["icon"]}" alt="" />
+                    <img src="${submenu['icon']}" alt="" />
                   </div>
-                  <h4 class="submenu-option-value">${submenu["submenu"]}</h4>
+                  <h4 class="submenu-option-value">${submenu['submenu']}</h4>
                 </a>
               </li>
             `;
@@ -188,26 +188,26 @@ class DuplexHeaderMenu extends LitElement {
   }
 
   _hamburSvgOpen() {
-    const hamburguer = this.shadowRoot.querySelector(".hamburger__icon");
-    hamburguer.classList.toggle("open");
+    const hamburguer = this.shadowRoot.querySelector('.hamburger__icon');
+    hamburguer.classList.toggle('open');
     const wrapperMenuList = hamburguer.closest(
-      ".header-menu-mobile"
+      '.header-menu-mobile'
     ).nextElementSibling;
-    wrapperMenuList.classList.toggle("opened");
+    wrapperMenuList.classList.toggle('opened');
   }
 
   _navUrlMenu(event) {
     event.preventDefault();
     const _handleUrl = () => {
-      if (event.target.nodeName === "H4") {
-        const urlTarget = event.target.closest(".container-submenu-option");
-        return urlTarget.getAttribute("href");
+      if (event.target.nodeName === 'H4') {
+        const urlTarget = event.target.closest('.container-submenu-option');
+        return urlTarget.getAttribute('href');
       }
-      if (event.target.nodeName === "IMG") {
-        const urlTarget = event.target.closest(".link-home-image");
-        return urlTarget.getAttribute("href");
+      if (event.target.nodeName === 'IMG') {
+        const urlTarget = event.target.closest('.link-home-image');
+        return urlTarget.getAttribute('href');
       }
-      return event.target.getAttribute("href");
+      return event.target.getAttribute('href');
     };
 
     const propertiesUrlMenu = {
@@ -215,7 +215,7 @@ class DuplexHeaderMenu extends LitElement {
     };
 
     this.dispatchEvent(
-      new CustomEvent("on-clicked-lit-header-menu-option", {
+      new CustomEvent('on-clicked-lit-header-menu-option', {
         bubbles: true,
         composed: true,
         detail: {
@@ -226,4 +226,4 @@ class DuplexHeaderMenu extends LitElement {
   }
 }
 
-window.customElements.define("duplex-header-menu", DuplexHeaderMenu);
+window.customElements.define('duplex-header-menu', DuplexHeaderMenu);

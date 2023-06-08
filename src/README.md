@@ -9,8 +9,8 @@ This is the duplex header.
 ## How to use
 
 ```js
-import { LitElement, html } from "lit-element";
-import "./src/duplex-header-menu";
+import { LitElement, html } from 'lit-element';
+import './src/duplex-header-menu';
 
 export class DuplexComponent extends LitElement {
   static get properties() {
@@ -27,32 +27,32 @@ export class DuplexComponent extends LitElement {
 
   constructor() {
     this.logo = {
-      mobile: "/src/resources/img/logo_duplex_negativo_vectorial.svg",
-      desktop: "/src/resources/img/logoDuplexVectorial.svg",
+      mobile: '/src/resources/img/logo_duplex_negativo_vectorial.svg',
+      desktop: '/src/resources/img/logoDuplexVectorial.svg',
     };
-    this.iconTlf = "/src/resources/img/icons/tlf.svg";
-    this.menuMobile = ["Mantenimiento", "Nueva Instalación"];
+    this.iconTlf = '/src/resources/img/icons/tlf.svg';
+    this.menuMobile = ['Mantenimiento', 'Nueva Instalación'];
     this.menu = {
       Servicios: [
         {
-          submenu: "Mantenimiento",
-          rl: "/servicios/mantenimiento",
-          icon: "/src/resources/img/icons/mantenice-icon.svg",
+          submenu: 'Mantenimiento',
+          rl: '/servicios/mantenimiento',
+          icon: '/src/resources/img/icons/mantenice-icon.svg',
         },
         {
-          submenu: "Nueva instalación",
-          url: "/servicios/nueva-instalacion",
-          icon: "/src/resources/img/icons/elevator-icon.svg",
+          submenu: 'Nueva instalación',
+          url: '/servicios/nueva-instalacion',
+          icon: '/src/resources/img/icons/elevator-icon.svg',
         },
       ],
-      Contacto: ["/contacto"],
+      Contacto: ['/contacto'],
     };
 
-    this.phoneNumber = "900 009 383";
+    this.phoneNumber = '900 009 383';
     this.menuSocial = [
       {
-        link: "https://es.linkedin.com/company/duplex-ascensores",
-        icon: "/src/resources/img/icons/linkedin-icon.sv",
+        link: 'https://es.linkedin.com/company/duplex-ascensores',
+        icon: '/src/resources/img/icons/linkedin-icon.sv',
       },
     ];
   }
@@ -90,14 +90,16 @@ export class DuplexComponent extends LitElement {
 
 ```js script
 export default {
-  title: "Layer",
+  title: 'Layer',
 };
 ```
 
 ## Demo
 
 ```js preview-story
-import { LitElement, html } from "lit-element";
+import { LitElement, html } from 'lit-element';
+import './duplex-header-menu';
+import 'dile-modal/dile-modal';
 
 export const Duplex = ({
   logo,
@@ -116,45 +118,58 @@ export const Duplex = ({
       .menuSocial="${menuSocial}"
       .menu="${menu}"
     >
-      <p slot="menu-tlf">Correo: prueba@gmail.com</p>
+      <div
+        slot="menu-tlf"
+        @click="${() => {
+          document.getElementById('myModal').open();
+        }}"
+      >
+        <p>Clica aquí para ver más información</p>
+        <dile-modal id="myModal" style="color:black;">
+          <p>Nombre: Daniel</p>
+          <p>Corre: daniel@gmail.com</p>
+          <button
+            @click="${() => {
+              document.getElementById('myModal').close();
+            }}"
+            style="border:none; padding:10px; background:blue; color: white; font-size: 20px;"
+          >
+            Cerrar
+          </button>
+        </dile-modal>
+      </div>
       <li slot="list-media-social">Instagram</li>
     </duplex-header-menu>
   `;
 
 Duplex.args = {
   logo: {
-    mobile: "/src/resources/img/logo_duplex_negativo_vectorial.svg",
-    desktop: "/src/resources/img/logoDuplexVectorial.svg",
+    mobile: '/src/resources/img/logo_duplex_negativo_vectorial.svg',
+    desktop: '/src/resources/img/logoDuplexVectorial.svg',
   },
-  iconTlf: "/src/resources/img/icons/tlf.svg",
-  menuMobile: ["Mantenimiento", "Nueva Instalación"],
+  iconTlf: '/src/resources/img/icons/tlf.svg',
+  menuMobile: ['Mantenimiento', 'Nueva Instalación'],
   menu: {
     Servicios: [
       {
-        submenu: "Mantenimiento",
-        url: "/servicios/mantenimiento",
-        icon: "/src/resources/img/icons/mantenice-icon.svg",
+        submenu: 'Mantenimiento',
+        url: '/servicios/mantenimiento',
+        icon: '/src/resources/img/icons/mantenice-icon.svg',
       },
       {
-        submenu: "Nueva instalación",
-        url: "/servicios/nueva-instalacion",
-        icon: "/src/resources/img/icons/elevator-icon.svg",
+        submenu: 'Nueva instalación',
+        url: '/servicios/nueva-instalacion',
+        icon: '/src/resources/img/icons/elevator-icon.svg',
       },
     ],
-    Contacto: ["/contacto"],
+    Contacto: ['/contacto'],
   },
-  phoneNumber: "900 009 383",
+  phoneNumber: '900 009 383',
   menuSocial: [
     {
-      link: "https://es.linkedin.com/company/duplex-ascensores",
-      icon: "/src/resources/img/icons/linkedin-icon.svg",
+      link: 'https://es.linkedin.com/company/duplex-ascensores',
+      icon: '/src/resources/img/icons/linkedin-icon.svg',
     },
   ],
-};
-
-Duplex.parameters = {
-  viewport: { defaultViewport: "Desktop" },
-  controls: { expanded: true },
-  docs: { source: { type: "code" } },
 };
 ```

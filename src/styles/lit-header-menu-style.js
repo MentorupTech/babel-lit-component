@@ -1,4 +1,4 @@
-import { css } from "lit-element";
+import { css } from 'lit-element';
 const style = css`
   :host {
     display: block;
@@ -152,7 +152,7 @@ const style = css`
 
     .menu-container-option-multiple::after {
       display: inline-block;
-      content: "";
+      content: '';
       margin-left: 5px;
       vertical-align: middle;
       border-top: 6px solid var(--duplex-dark-black, #1d1d1e);
@@ -229,6 +229,13 @@ const style = css`
 
     .container-submenu-option-img img {
       width: 30px;
+    }
+
+    .modal-container {
+      cursor: pointer;
+      color: red;
+      font-weight: bold;
+      text-align: center;
     }
   }
 `;

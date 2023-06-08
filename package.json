@@ -15,5 +15,9 @@
     "@storybook/addon-docs": "^7.0.18",
     "@web/dev-server": "^0.2.1",
     "@web/dev-server-storybook": "^0.7.1"
+  },
+  "dependencies": {
+    "dile-modal": "^1.5.4",
+    "lit-element": "^3.3.2"
   }
 }

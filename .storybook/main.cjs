@@ -1,5 +1,3 @@
 module.exports = {
-  open: "/",
-  nodeResolve: true,
-  stories: ["../src/README.md", "../stories/**/*.stories.@(js)"],
+  stories: ['../src/README.md', '../stories/**/*.stories.@(js)'],
 };
